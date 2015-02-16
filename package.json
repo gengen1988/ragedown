@@ -1,0 +1,17 @@
+{
+  "name": "downloader",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build-app": "uglifyjs bower_components/async/lib/async.js bower_components/file-saver/FileSaver.js app.js -c -o dist/app.min.js",
+    "build-loader": "uglifyjs loader.js -c -o dist/loader.min.js",
+    "build": "npm run build-app && npm run build-loader"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.11.2"
+  }
+}
