@@ -1,40 +1,21 @@
-if (notLoaded()) {
+var ID = 'ragedown';
+var SCRIPT = 'http://localhost:3000/dist/app.min.js';
+// var STYLE = null;
+
+var root = document.getElementById(ID)
+
+if (!root) {
+  root = document.createElement('div');
+  // script
   var script = document.createElement('script');
-  script.src = 'http://localhost:3000/dist/app.min.js';
-  script.onload = boot;
-  document.body.appendChild(script);
-} else {
-  boot();
-}
+  script.src = SCRIPT;
+  root.appendChild(script);
 
-function notLoaded() {
-  return typeof loaded === 'undefined';
-}
+  // style
+  // style = document.createElement('link');
+  // style.href = STYLE;
+  // style.rel = 'stylesheet';
+  // root.appendChild(style);
 
-function boot() {
-  var downloader = document.getElementById('ux-downloader');
-  if (!downloader) {
-    render();
-  }
-}
-
-function render() {
-  var ui = document.createElement('div');
-  var input = document.createElement('input');
-  var button = document.createElement('button');
-
-  ui.style.position = 'fixed';
-  ui.style.top = 0;
-  ui.style.left = 0;
-  ui.id = 'ux-downloader';
-  button.innerHTML = 'Download';
-  button.onclick = function () {
-    download(input.value, function (err, blob) {
-      saveAs(blob, 'test.zip');
-    });
-  };
-
-  ui.appendChild(input);
-  ui.appendChild(button);
-  document.body.appendChild(ui);
+  document.body.appendChild(root);
 }

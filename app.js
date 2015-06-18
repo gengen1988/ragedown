@@ -1,4 +1,5 @@
-var loaded = true;
+var async = require('async');
+var saveAs = require('file-saver').saveAs;
 
 function getSize(address, callback) {
   var xhr = new XMLHttpRequest();
@@ -38,7 +39,7 @@ function Part(size, position) {
   this.position = position;
 }
 
-Part.prototype.makeRange = function (item) {
+Part.prototype.makeRange = function(item) {
   return 'bytes=' + this.position + '-' + (this.position + this.size - 1);
 };
 
@@ -57,3 +58,26 @@ function partition(size, position, i) {
 
   return partition(size1, position1, next).concat(partition(size2, position2, next));
 }
+
+function render() {
+  var ui = document.createElement('div');
+  var input = document.createElement('input');
+  var button = document.createElement('button');
+
+  ui.style.position = 'fixed';
+  ui.style.top = 0;
+  ui.style.left = 0;
+  ui.id = 'ux-downloader';
+  button.innerHTML = 'Download';
+  button.onclick = function () {
+    download(input.value, function (err, blob) {
+      saveAs(blob, 'test.zip');
+    });
+  };
+
+  ui.appendChild(input);
+  ui.appendChild(button);
+  document.body.appendChild(ui);
+}
+
+render();
