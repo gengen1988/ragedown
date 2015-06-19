@@ -10,8 +10,6 @@ Published by bookmarklet to prevent cross domain.
 
 Add this code to bookmark:
 
+```javascript
+javascript:!function(){var e='ragedown',t='http://localhost:3000/dist/app.min.js',d=document.getElementById(e);if(!d){d=document.createElement('div');var n=document.createElement('script');n.src=t,d.appendChild(n),document.body.appendChild(d)}}();
 ```
-javascript:(function(){function notLoaded(){return"undefined"==typeof loaded}function boot(){var downloader=document.getElementById("ux-downloader");downloader||render()}function render(){var ui=document.createElement("div"),input=document.createElement("input"),button=document.createElement("button");ui.style.position="fixed",ui.style.top=0,ui.style.left=0,ui.id="ux-downloader",button.innerHTML="Download",button.onclick=function(){download(input.value,function(err,blob){saveAs(blob,"test.zip")})},ui.appendChild(input),ui.appendChild(button),document.body.appendChild(ui)}if(notLoaded()){var script=document.createElement("script");script.src="http://localhost:3000/dist/app.min.js",script.onload=boot,document.body.appendChild(script)}else boot();})();
-
-```
-

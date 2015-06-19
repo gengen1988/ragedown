@@ -5,20 +5,16 @@
   "main": "app.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
+    "template": "templates/index.html && templates/README.md",
     "pack-app": "browserify -e app.js -o dist/app.js",
     "minify-app": "uglifyjs dist/app.js -c -m -o dist/app.min.js",
-    "pack-loader": "browserify -e loader.js -o dist/loader.js",
-    "minify-loader": "uglifyjs dist/loader.js -b \"quote_style=1,beautify=false\" -c -m -o dist/loader.min.js",
     "build-app": "npm run pack-app && npm run minify-app",
-    "build-loader": "npm run pack-loader && npm run minify-loader",
-    "build": "npm run build-app && npm run build-loader"
+    "build-loader": "uglifyjs loader.js -b \"quote_style=1, beautify=false\" -c -m -o dist/loader.min.js",
+    "build": "npm run build-app && npm run build-loader && npm run template"
   },
-  "author": "",
-  "license": "ISC",
+  "author": "GG",
+  "license": "MIT",
   "dependencies": {
-    "async": "^1.2.1",
-    "ejs": "^2.3.1",
-    "express": "^4.11.2",
-    "file-saver": "file:..\\..\\AppData\\Local\\Temp\\npm-1064-3603aaf1\\git-cache-b3bdb3714e7d\\47ae6497bf0c14855e8e4258277315d05ab70af7"
+    "async": "^1.2.1"
   }
 }

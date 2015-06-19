@@ -1,3 +1,7 @@
+#!/bin/bash
+
+
+cat > index.html << EOF
 <!DOCTYPE html>
 <html>
 <head>
@@ -6,6 +10,7 @@
 <body>
   <h1>Bookmarklet Test Page</h1>
   <p>use this link to test bookmarklet load</p>
-  <a href="javascript: <%- include('dist/loader.min.js') %>">test</a>
+  <a href="javascript:`cat dist/loader.min.js`">test</a>
 </body>
 </html>
+EOF

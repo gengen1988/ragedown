@@ -1,21 +1,25 @@
-var ID = 'ragedown';
-var SCRIPT = 'http://localhost:3000/dist/app.min.js';
-// var STYLE = null;
+(function() {
 
-var root = document.getElementById(ID)
+  var ID = 'ragedown';
+  var SCRIPT = 'http://localhost:3000/dist/app.min.js';
+  // var STYLE = null;
 
-if (!root) {
-  root = document.createElement('div');
-  // script
-  var script = document.createElement('script');
-  script.src = SCRIPT;
-  root.appendChild(script);
+  var root = document.getElementById(ID)
 
-  // style
-  // style = document.createElement('link');
-  // style.href = STYLE;
-  // style.rel = 'stylesheet';
-  // root.appendChild(style);
+  if (!root) {
+    root = document.createElement('div');
+    // script
+    var script = document.createElement('script');
+    script.src = SCRIPT;
+    root.appendChild(script);
 
-  document.body.appendChild(root);
-}
+    // style
+    // style = document.createElement('link');
+    // style.href = STYLE;
+    // style.rel = 'stylesheet';
+    // root.appendChild(style);
+
+    document.body.appendChild(root);
+  }
+
+})();
